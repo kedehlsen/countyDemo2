@@ -3,7 +3,10 @@ import os
 import json
 app = Flash(__name__)
 
-def get_state_options(counties)
+@app.route("/")
+def get_state_options(counties):
+    return render_template('home.html')
+
   
 
 if __name__=="__main__":
