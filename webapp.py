@@ -3,6 +3,10 @@ import os
 import json
 app = Flash(__name__)
 
+def main():
+    with open('county_demographics.json') as demographics_data:
+        counties = json.load(demographics_data)
+
 @app.route("/")
 def get_state_options(counties):
     listOfStates = []
