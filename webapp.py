@@ -5,7 +5,13 @@ app = Flash(__name__)
 
 @app.route("/")
 def get_state_options(counties):
-    return render_template('home.html')
+    listOfStates = []
+    for data in counties:
+        if data['State'] not in listOfStates:
+            listOfStates.append(data['State'])
+    for state in listOfStates:
+        options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
+    return options
 
   
 
