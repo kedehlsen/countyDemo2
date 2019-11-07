@@ -22,6 +22,7 @@ def get_state_options(counties):
         options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
     return options
 
+@app.route("/fact")
 def get_interesting_fact(state,counties):
     states={}
     for data in counties:
