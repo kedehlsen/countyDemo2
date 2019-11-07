@@ -13,6 +13,7 @@ def main():
 
 def get_state_options(counties):
     listOfStates = []
+    options = ""
     for data in counties:
         if data['State'] not in listOfStates:
             listOfStates.append(data['State'])
