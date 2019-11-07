@@ -9,7 +9,15 @@ def main():
     with open('county_demographics.json') as demographics_data:
         counties = json.load(demographics_data)
         state= request.args
-    return render_template('countyDemo.html', options=get_state_options(counties))
+    return render_template('countyDemo.html', options=get_state_options(counties), fact="")
+
+@app.route("/fact")
+def fact():
+    with open('county_demographics.json') as demographics_data:
+        counties = json.load(demographics_data)
+        state= request.args
+    return render_template('countyDemo.html', options=get_state_options(counties), fact="hullo")
+
 
 
 def get_state_options(counties):
@@ -22,7 +30,7 @@ def get_state_options(counties):
         options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
     return options
 
-@app.route("/fact")
+
 def get_interesting_fact(state,counties):
     states={}
     for data in counties:
