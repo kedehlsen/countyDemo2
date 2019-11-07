@@ -22,7 +22,7 @@ def get_state_options(counties):
         options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
     return options
 
-def get_interesting_fact(state,counties)
+def get_interesting_fact(state,counties):
     states={}
     for data in counties:
         if data['State'] not in states:
