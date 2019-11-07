@@ -1,6 +1,7 @@
 from flask import Flask, request, Markup, render_template, flash, Markup
 import os
 import json
+import random
 app = Flask(__name__)
 
 @app.route("/")
@@ -21,6 +22,15 @@ def get_state_options(counties):
         options = options + Markup("<option value=\"" + state + "\">" + state + "</option>")
     return options
 
+def get_interesting_fact(state,counties)
+    states={}
+    for data in counties:
+        if data['State'] not in states:
+            states[data['State']] = 1
+        else:
+            states[data['State']] += 1
+    return state + " has " + states[state] + " counties ".
+    
   
 
 if __name__=="__main__":
