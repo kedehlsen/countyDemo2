@@ -8,8 +8,7 @@ app = Flask(__name__)
 def main():
     with open('county_demographics.json') as demographics_data:
         counties = json.load(demographics_data)
-        state= request.args["state"]
-    return render_template('countyDemo.html', options=get_state_options(counties), fact=get_interesting_fact(state,counties))
+    return render_template('countyDemo.html', options=get_state_options(counties))
 
 @app.route("/fact")
 def facts():
