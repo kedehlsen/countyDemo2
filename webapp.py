@@ -32,13 +32,17 @@ def get_state_options(counties):
 
 def get_interesting_fact(state,counties):
     states={}
+    returnVal= ""
     for data in counties:
         if data['State'] not in states:
             states[data['State']] = 1
         else:
             states[data['State']] += 1
-    return state + " has " + str(states[state]) + " counties."
-    
+    if str(states[state]) > 1:
+        returnVal= state + " has " + str(states[state]) + " counties."
+    else:
+        returnVal= state + " has " + str(states[state]) + " county."
+    return returnVal
   
 
 if __name__=="__main__":
