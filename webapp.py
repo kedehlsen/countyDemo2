@@ -38,7 +38,7 @@ def get_interesting_fact(state,counties):
             states[data['State']] = 1
         else:
             states[data['State']] += 1
-    return state + " has " + states[state] + " counties."
+    return state + " has " + str(states[state]) + " counties."
     
   
 
