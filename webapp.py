@@ -12,10 +12,16 @@ def main():
 
 @app.route("/fact")
 def facts():
+    toReturn = ""
     with open('county_demographics.json') as demographics_data:
         counties = json.load(demographics_data)
         state= request.args["state"]
-    return render_template('countyDemo.html', options=get_state_options(counties), fact=get_interesting_fact(state,counties))
+        value = random.randint(0,2)
+        if value < 1:
+            toReturn = render_template('countyDemo.html', options=get_state_options(counties), fact=get_interesting_fact(state,counties))
+        else:
+            toReturn = render_template('countyDemo.html', options=get_state_options(counties), fact=get_interesting_fact2(state,counties))
+    return toReturn
 
 
 
@@ -45,7 +51,17 @@ def get_interesting_fact(state,counties):
     return returnVal
 
 def get_interesting_fact2(state,counties):
+    states={}
+    returnVal= ""
+    for data in counties:
+        if data['State'] not in states:
+            states[data['State']] = data['Population']['2014 Population']
+        else:
+            states[data['State']] += data['Population']['2014 Population']
     
+        returnVal= state + " has " + str(states[state]) + " people in its population as of 2014."
+    
+    return returnVal
 
 if __name__=="__main__":
   app.run(debug=True, port=54321)
