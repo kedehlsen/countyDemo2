@@ -59,7 +59,7 @@ def get_interesting_fact2(state,counties):
         else:
             states[data['State']] += data['Population']['2014 Population']
     
-        returnVal= state + " has " + str(states[state]) + " people in its population as of 2014."
+        returnVal= state + " has " + str(states[state]['Population']['2014 Population']) + " people in its population as of 2014."
     
     return returnVal
 
