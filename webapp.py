@@ -38,12 +38,14 @@ def get_interesting_fact(state,counties):
             states[data['State']] = 1
         else:
             states[data['State']] += 1
-    if str(states[state]) > 1:
+    if states[state] > 1:
         returnVal= state + " has " + str(states[state]) + " counties."
     else:
         returnVal= state + " has " + str(states[state]) + " county."
     return returnVal
-  
+
+def get_interesting_fact2(state,counties):
+    
 
 if __name__=="__main__":
   app.run(debug=True, port=54321)
